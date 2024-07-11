@@ -25,11 +25,13 @@
 
         {{-- include nav --}}
         @include('layouts.nav')
-        
+
         {{-- content --}}
         @yield('content')
 
           {{-- script --}}
           @yield('script')
+
+          @include('layouts.footer')
     </body>
 </html>
