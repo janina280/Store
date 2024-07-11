@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserController;
@@ -16,7 +17,14 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+//user routes
 Route::middleware(['auth', 'userMiddleware'])->group(function()
 {
 Route::get('dashboard', [UserController::class,'index'])->name('dashboard');
+});
+
+//admin routes
+Route::middleware(['auth', 'adminMiddleware'])->group(function()
+{
+Route::get('/admin/dashboard', [AdminController::class,'index'])->name('admin.dashboard');
 });
