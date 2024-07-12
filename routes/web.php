@@ -1,9 +1,12 @@
 <?php
 
-use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Route;
+
+
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\AdminController;
 
 Route::get('/', function () {
@@ -26,4 +29,6 @@ Route:: middleware(['auth','userMiddleware'])->group(function () {
 //admin routes
 Route:: middleware(['auth','adminMiddleware'])->group(function () {
     Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+   Route::get('/admin/posts', [PostController::class, 'index'])->name('admin.posts');
+    
 });

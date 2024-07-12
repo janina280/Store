@@ -18,8 +18,8 @@
 
                     {{-- admin links--}}
                     @if (Auth::user()->usertype == 'admin')
-                    <x-nav-link href="{{url('admin/product')}}" :active="request()->routeIs('admin.product')">
-                        {{ __('Product') }}
+                    <x-nav-link href="{{ url('admin/posts') }}" :active="request()->routeIs('admin.posts')">
+                        {{ __('Post') }}
                     </x-nav-link>
 
                     <x-nav-link href="admin/category" :active="request()->routeIs('admin.category')">
