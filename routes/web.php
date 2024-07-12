@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -12,7 +14,8 @@ use App\Http\Controllers\Admin\AdminController;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-
+Route::get('contact',[ContactController::class,'index'])->name('contact');
+Route::get('about',[AboutController::class,'index'])->name('about');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -30,5 +33,4 @@ Route:: middleware(['auth','userMiddleware'])->group(function () {
 Route:: middleware(['auth','adminMiddleware'])->group(function () {
     Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
    Route::get('/admin/posts', [PostController::class, 'index'])->name('admin.posts');
-    
 });
